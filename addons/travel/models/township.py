@@ -5,3 +5,4 @@ class TownShip(models.Model):
     _description = 'TownShip'
 
     name = fields.Char()
+    gate_ids = fields.One2many('travel.gate','township_id')
