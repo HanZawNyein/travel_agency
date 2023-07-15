@@ -12,11 +12,11 @@
                             <tree editable="top">
                                 <field name="name"/>
                             </tree>
-<!--                            <form>-->
-<!--                                <group>-->
-<!--                                    <field name="name"/>-->
-<!--                                </group>-->
-<!--                            </form>-->
+                            <!--                            <form>-->
+                            <!--                                <group>-->
+                            <!--                                    <field name="name"/>-->
+                            <!--                                </group>-->
+                            <!--                            </form>-->
                         </field>
                     </group>
                 </sheet>
@@ -30,12 +30,5 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
-    <menuitem id="travel_root" name="Travel">
-        <!-- This Menu Item Must have a parent -->
-        <menuitem id="travel_categ" name="Travel">
-            <!-- This Menu Item must have a parent and an action -->
-            <menuitem id="township_categ" name="Township" action="township_action" sequence="5"/>
-        </menuitem>
-    </menuitem>
+
 </odoo>
