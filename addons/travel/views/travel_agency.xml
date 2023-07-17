@@ -17,6 +17,11 @@
         <field name="arch" type="xml">
             <form string="travel_agency_form">
                 <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="reference" readonly="1"/>
+                        </h1>
+                    </div>
                     <group>
                         <group>
                             <field name="name"/>
@@ -25,11 +30,16 @@
                             <field name="license_number"/>
                         </group>
                         <group>
-                            <field name="reference"/>
+                            <field name="reference" readonly="1"/>
                         </group>
                     </group>
                 </sheet>
             </form>
+            <div class="oe_chatter">
+                <field name="message_follower_ids"/>
+                <field name="activity_ids"/>
+                <field name="message_ids"/>
+            </div>
         </field>
     </record>
     <record id="travel_agency_action" model="ir.actions.act_window">

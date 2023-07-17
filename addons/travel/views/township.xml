@@ -21,6 +21,11 @@
                     </group>
                 </sheet>
             </form>
+            <div class="oe_chatter">
+                <field name="message_follower_ids"/>
+                <field name="activity_ids"/>
+                <field name="message_ids"/>
+            </div>
         </field>
     </record>
     <record id="township_action" model="ir.actions.act_window">
