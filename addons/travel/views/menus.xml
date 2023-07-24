@@ -8,6 +8,7 @@
             <menuitem id="travel_gate_categ" name="Gates" action="travel.travel_gate_action" sequence="0"/>
             <menuitem id="township_categ" name="Township" action="travel.township_action" sequence="5"/>
             <menuitem id="travel_agency_categ" name="Agency" action="travel.travel_agency_action" sequence="10"/>
+            <menuitem id="travel_car_categ" name="Cars" action="travel.travel_car_action" sequence="15"/>
         </menuitem>
     </menuitem>
 

@@ -12,8 +12,9 @@
         "views/township.xml",
         "views/travel_gate.xml",
         "views/travel_agency.xml",
+        "views/travel_car.xml",
 
         # menus
-        'views/menus.xml'
+        'views/menus.xml',
     ]
 }

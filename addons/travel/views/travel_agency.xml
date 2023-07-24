@@ -33,6 +33,11 @@
                             <field name="reference" readonly="1"/>
                         </group>
                     </group>
+                    <field name="travel_car_ids">
+                        <tree editable="bottom">
+                            <field name="car_number"/>
+                        </tree>
+                    </field>
                 </sheet>
             </form>
             <div class="oe_chatter">

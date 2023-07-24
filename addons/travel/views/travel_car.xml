@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="tavel_car_view_tree" model="ir.ui.view">
+        <field name="name">tavel_car_view_tree</field>
+        <field name="model">travel.car</field>
+        <field name="arch" type="xml">
+            <tree string="tavel_car_tree">
+                <field name="car_number"/>
+                <field name="travel_agency_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="travel_car_view_form" model="ir.ui.view">
+        <field name="name">travel_car_view_form</field>
+        <field name="model">travel.car</field>
+        <field name="arch" type="xml">
+            <form string="travel_car_form">
+                <sheet>
+                    <group>
+                        <field name="car_number"/>
+                        <field name="travel_agency_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="travel_car_action" model="ir.actions.act_window">
+        <field name="name">Cars</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">travel.car</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
