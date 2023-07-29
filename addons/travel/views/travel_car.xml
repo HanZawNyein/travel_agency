@@ -7,6 +7,9 @@
             <tree string="tavel_car_tree">
                 <field name="car_number"/>
                 <field name="travel_agency_id"/>
+                <field name="partner_id"/>
+                <field name="join_date"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
@@ -15,10 +18,23 @@
         <field name="model">travel.car</field>
         <field name="arch" type="xml">
             <form string="travel_car_form">
+                <header>
+
+                    <button name="action_draft" type="object" string="Rest to Draft"
+                            attrs="{'invisible':[('state','!=','running')]}"/>
+
+                    <button name="action_change_driver" class="btn btn-info" type="object" string="Change Driver"
+                            attrs="{'invisible':[('state','!=','running')]}"/>
+                    <button name="action_running" type="object" string="Run" class="btn btn-primary"
+                            attrs="{'invisible':[('state','!=','draft')]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="car_number"/>
                         <field name="travel_agency_id"/>
+                        <field name="partner_id" readonly="1"/>
+                        <field name="join_date" readonly="1"/>
                     </group>
                 </sheet>
             </form>

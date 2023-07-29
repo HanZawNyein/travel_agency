@@ -16,5 +16,8 @@
 
         # menus
         'views/menus.xml',
+
+        # wizard
+        "wizard/change_driver_wizard.xml",
     ]
 }
