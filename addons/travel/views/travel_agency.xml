@@ -36,6 +36,8 @@
                     <field name="travel_car_ids">
                         <tree editable="bottom">
                             <field name="car_number"/>
+                            <field name="partner_id" string="Driver"/>
+                            <field name="join_date"/>
                         </tree>
                     </field>
                 </sheet>

@@ -9,6 +9,8 @@
             <menuitem id="township_categ" name="Township" action="travel.township_action" sequence="5"/>
             <menuitem id="travel_agency_categ" name="Agency" action="travel.travel_agency_action" sequence="10"/>
             <menuitem id="travel_car_categ" name="Cars" action="travel.travel_car_action" sequence="15"/>
+            <menuitem id="travel_driver_history_categ" name="Drivers History"
+                      action="travel.travel_driver_history_action" sequence="20"/>
         </menuitem>
     </menuitem>
 

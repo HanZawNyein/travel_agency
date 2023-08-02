@@ -9,6 +9,7 @@
         "data/sequence.xml",
 
         # views
+        "views/travel_driver_history.xml",
         "views/township.xml",
         "views/travel_gate.xml",
         "views/travel_agency.xml",
