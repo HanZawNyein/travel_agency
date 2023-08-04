@@ -19,7 +19,6 @@
         <field name="arch" type="xml">
             <form string="travel_car_form">
                 <header>
-
                     <button name="action_draft" type="object" string="Rest to Draft"
                             attrs="{'invisible':[('state','!=','running')]}"/>
 
@@ -30,6 +29,14 @@
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_change_driver_history" type="object" class="oe_stat_button"
+                                icon="fa-calendar icon">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Driver History</span>
+                            </div>
+                        </button>
+                    </div>
                     <group>
                         <field name="car_number"/>
                         <field name="travel_agency_id"/>
