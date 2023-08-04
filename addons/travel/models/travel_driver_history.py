@@ -1,4 +1,5 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError
 
 
 class TravelDriverHistory(models.Model):
@@ -11,3 +12,8 @@ class TravelDriverHistory(models.Model):
     driver_id = fields.Many2one('res.partner')
     join_date = fields.Date()
     fired_date = fields.Date()
+
+    @api.constrains('join_date', 'fired_date')
+    def _check_join_fired_date(self):
+        if self.join_date > self.fired_date:
+            raise UserError(_("Join Date should be greater than Fired Date!"))

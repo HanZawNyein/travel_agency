@@ -4,7 +4,7 @@
         <field name="name">travel_change_driver_history_view_tree</field>
         <field name="model">travel.driver.history</field>
         <field name="arch" type="xml">
-            <tree string="travel_change_driver_history_tree">
+            <tree string="travel_change_driver_history_tree" create="0" delete="0">
                 <field name="travel_car_id"/>
                 <field name="travel_agency_id"/>
                 <field name="driver_id"/>
@@ -17,7 +17,7 @@
         <field name="name">travel_change_driver_history_view_form</field>
         <field name="model">travel.driver.history</field>
         <field name="arch" type="xml">
-            <form string="travel_change_driver_history_form">
+            <form string="travel_change_driver_history_form" create="0" delete="0" edit="0">
                 <sheet>
                     <group>
                         <group string="Car Information">
@@ -25,7 +25,7 @@
                             <field name="travel_agency_id"/>
                         </group>
                         <group string="Driver Information">
-                            <field name="driver_id"/>
+                            <field name="driver_id" options="{'no_open': True}"/>
                             <field name="join_date"/>
                             <field name="fired_date"/>
                         </group>
