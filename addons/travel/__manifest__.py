@@ -14,6 +14,7 @@
         "views/travel_gate.xml",
         "views/travel_agency.xml",
         "views/travel_car.xml",
+        "views/transportation_route.xml",
 
         # menus
         'views/menus.xml',

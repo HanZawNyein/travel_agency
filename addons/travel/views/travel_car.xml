@@ -39,6 +39,7 @@
                             </div>
                         </button>
                     </div>
+                    <field name="avatar" widget="image" class="oe_avatar"/>
                     <widget name="web_ribbon" bg_color="bg-success" title="Running"
                             attrs="{'invisible':[('state','!=','running')]}"/>
                     <widget name="web_ribbon" bg_color="bg-danger" title="Draft"

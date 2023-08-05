@@ -10,6 +10,9 @@
             <menuitem id="travel_car_categ" name="Cars" action="travel.travel_car_action" sequence="15"/>
             <menuitem id="travel_driver_history_categ" name="Drivers History"
                       action="travel.travel_driver_history_action" sequence="20"/>
+            <!-- This Menu Item must have a parent and an action -->
+            <menuitem id="transportation_route_categ" name="Transportation Route"
+                      action="travel.transportation_route_action" sequence="25"/>
         </menuitem>
         <!-- This Menu Item Must have a parent -->
         <menuitem id="configuration_categ" name="Configuration" sequence="5">
