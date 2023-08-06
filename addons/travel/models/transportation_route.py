@@ -7,6 +7,7 @@ class TransportationRoute(models.Model):
     _description = 'TransportationRoute'
 
     travel_agency_id = fields.Many2one('travel.agency', required=True)
+    logo = fields.Image(related="travel_agency_id.logo")
     travel_car_id = fields.Many2one('travel.car')
     avatar = fields.Image(related='travel_car_id.avatar')
     driver_id = fields.Many2one('res.partner', related="travel_car_id.partner_id")
@@ -16,6 +17,12 @@ class TransportationRoute(models.Model):
     arrived_datetime = fields.Datetime()
     arrived_township = fields.Many2one('travel.township')
     arrived_gate = fields.Many2one('travel.gate')
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('confirm', 'Confirm'),
+        ('running', 'Running'),
+        ('arrived', 'Arrived'),
+    ], default='draft')
 
     def name_get(self):
         return [(rec.id, f"{rec.travel_car_id.car_number}({rec.start_datetime}-{rec.arrived_datetime})") for rec in

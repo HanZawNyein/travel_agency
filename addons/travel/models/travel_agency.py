@@ -11,6 +11,7 @@ class TravelAgency(models.Model):
     reference = fields.Char(tracking=True, default=lambda self: _("New"), copy=False)
     license_number = fields.Char(tracking=True)
     travel_car_ids = fields.One2many('travel.car', 'travel_agency_id')
+    logo = fields.Image()
 
     _sql_constraints = [
         ('license_number_unique', 'unique(license_number)', 'License Number be unique !')
