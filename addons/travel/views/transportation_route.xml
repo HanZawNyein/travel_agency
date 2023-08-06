@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <record id="transportation_route_view_tree" model="ir.ui.view">
+        <field name="name">transportation_route_view_tree</field>
+        <field name="model">transportation.route</field>
+        <field name="arch" type="xml">
+            <tree string="transportation_route_tree">
+                <field name="travel_agency_id"/>
+                <field name="travel_car_id"/>
+                <field name="driver_id"/>
+                <field name="start_datetime"/>
+                <field name="start_township"/>
+                <field name="start_gate"/>
+                <field name="arrived_datetime"/>
+                <field name="arrived_township"/>
+                <field name="arrived_gate"/>
+            </tree>
+        </field>
+    </record>
     <record id="transportation_route_view_form" model="ir.ui.view">
         <field name="name">transportation_route_view_form</field>
         <field name="model">transportation.route</field>
@@ -7,24 +24,21 @@
             <form string="transportation_route_form">
                 <sheet>
                     <field name="avatar" widget="image" class="oe_avatar"/>
-                    <group>
-                        <group string="Agency Information">
-                            <field name="travel_agency_id"/>
-                            <field name="travel_car_id"/>
-                            <field name="driver_id"/>
-                        </group>
-
+                    <group string="Agency Information">
+                        <field name="travel_agency_id"/>
+                        <field name="travel_car_id" domain="[('travel_agency_id','=',travel_agency_id)]"/>
+                        <field name="driver_id"/>
                     </group>
                     <group string="Route Information">
                         <group>
                             <field name="start_datetime"/>
                             <field name="start_township"/>
-                            <field name="start_gate"/>
+                            <field name="start_gate" domain="[('township_id','=',start_township)]"/>
                         </group>
                         <group>
                             <field name="arrived_datetime"/>
                             <field name="arrived_township"/>
-                            <field name="arrived_gate"/>
+                            <field name="arrived_gate" domain="[('township_id','=',arrived_township)]"/>
                         </group>
                     </group>
                 </sheet>

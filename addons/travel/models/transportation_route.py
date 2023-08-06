@@ -1,4 +1,5 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError
 
 
 class TransportationRoute(models.Model):
@@ -15,3 +16,27 @@ class TransportationRoute(models.Model):
     arrived_datetime = fields.Datetime()
     arrived_township = fields.Many2one('travel.township')
     arrived_gate = fields.Many2one('travel.gate')
+
+    def name_get(self):
+        return [(rec.id, f"{rec.travel_car_id.car_number}({rec.start_datetime}-{rec.arrived_datetime})") for rec in
+                self]
+
+    @api.constrains('start_datetime', 'arrived_datetime')
+    def _check_start_arrived_datetime(self):
+        if self.start_datetime >= self.arrived_datetime:
+            raise UserError(_("Start Datetime Should be greater than arrived datetime!"))
+
+    @api.onchange('travel_agency_id')
+    def _onchange_travel_agency_id(self):
+        if self.travel_agency_id:
+            self.travel_car_id = False
+
+    @api.onchange('start_township')
+    def _onchange_start_township(self):
+        if self.start_township:
+            self.start_gate = False
+
+    @api.onchange('arrived_township')
+    def _onchange_arrived_township(self):
+        if self.arrived_township:
+            self.arrived_gate = False
