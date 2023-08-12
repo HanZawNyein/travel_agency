@@ -47,3 +47,6 @@ class TransportationRoute(models.Model):
     def _onchange_arrived_township(self):
         if self.arrived_township:
             self.arrived_gate = False
+
+    def action_confirm(self):
+        self.state = "confirm"
