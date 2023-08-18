@@ -12,15 +12,11 @@
                             <tree editable="top">
                                 <field name="name"/>
                             </tree>
-                            <!--                            <form>-->
-                            <!--                                <group>-->
-                            <!--                                    <field name="name"/>-->
-                            <!--                                </group>-->
-                            <!--                            </form>-->
                         </field>
                     </group>
                 </sheet>
             </form>
+
             <div class="oe_chatter">
                 <field name="message_follower_ids"/>
                 <field name="activity_ids"/>
@@ -28,6 +24,7 @@
             </div>
         </field>
     </record>
+
     <record id="township_action" model="ir.actions.act_window">
         <field name="name">Township</field>
         <field name="type">ir.actions.act_window</field>
