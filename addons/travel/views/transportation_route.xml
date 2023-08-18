@@ -40,6 +40,12 @@
                             <div class="ribbon ribbon-top-right" attrs="{'invisible': [('state', '!=', 'draft')]}">
                                 <span class="bg-danger">Draft</span>
                             </div>
+                            <div class="ribbon ribbon-top-right" attrs="{'invisible': [('state', '!=', 'confirm')]}">
+                                <span class="bg-success">Confirm</span>
+                            </div>
+                            <div class="ribbon ribbon-top-right" attrs="{'invisible': [('state', '!=', 'running')]}">
+                                <span class="bg-warning">Running</span>
+                            </div>
                             <div class="oe_kanban_details d-flex flex-column justify-content-between">
                                 <div>
                                     <strong class="o_kanban_record_title oe_partner_heading">
@@ -84,6 +90,9 @@
                 <field name="arrived_township"/>
                 <field name="arrived_gate"/>
                 <field name="state"/>
+                <field name="seat"/>
+                <field name="per_seat"/>
+
             </tree>
         </field>
     </record>
@@ -94,7 +103,8 @@
 
             <form string="transportation_route_form">
             <header>
-                <button name="action_confirm" type="object" string="Confirm" class="btn btn-primary"/>
+                <button name="action_confirm" type="object" string="Confirm" class="btn btn-primary" states="draft"/>
+                <button name="action_running" type="object" string="Running" class="btn btn-primary" states="confirm"/>
                 <field name="state" widget="statusbar"/>
             </header>
                 <sheet>
@@ -102,6 +112,8 @@
                     <group string="Agency Information">
                         <field name="travel_agency_id"/>
                         <field name="travel_car_id" domain="[('travel_agency_id','=',travel_agency_id)]"/>
+                        <field name="seat"/>
+                        <field name="per_seat"/>
                         <field name="driver_id"/>
                     </group>
                     <group string="Route Information">

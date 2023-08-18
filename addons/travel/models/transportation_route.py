@@ -9,6 +9,8 @@ class TransportationRoute(models.Model):
     travel_agency_id = fields.Many2one('travel.agency', required=True)
     logo = fields.Image(related="travel_agency_id.logo")
     travel_car_id = fields.Many2one('travel.car')
+    seat = fields.Integer(related="travel_car_id.seat")
+    per_seat = fields.Float()
     avatar = fields.Image(related='travel_car_id.avatar')
     driver_id = fields.Many2one('res.partner', related="travel_car_id.partner_id")
     start_datetime = fields.Datetime()
@@ -50,3 +52,6 @@ class TransportationRoute(models.Model):
 
     def action_confirm(self):
         self.state = "confirm"
+
+    def action_running(self):
+        self.state = "running"

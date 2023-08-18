@@ -14,6 +14,7 @@ class TravelCar(models.Model):
         ('running', 'Running')
     ], default='draft')
     avatar = fields.Image()
+    seat = fields.Integer(required=True)
 
     def name_get(self):
         return [(rec.id, f"{rec.car_number}({rec.travel_agency_id.name})") for rec in self]

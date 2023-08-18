@@ -3,7 +3,10 @@
     <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
     <menuitem id="travel_root" name="Travel">
         <!-- This Menu Item Must have a parent -->
-        <menuitem id="travel_categ" sequence="0" name="Travel">
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="travel_booking_categ" name="Booking" action="travel_booking_action" sequence="0"/>
+
+        <menuitem id="travel_categ" sequence="5" name="Travel">
             <!-- This Menu Item must have a parent and an action -->
 
             <menuitem id="travel_agency_categ" name="Agency" action="travel.travel_agency_action" sequence="10"/>
@@ -14,8 +17,9 @@
             <menuitem id="transportation_route_categ" name="Transportation Route"
                       action="travel.transportation_route_action" sequence="25"/>
         </menuitem>
+
         <!-- This Menu Item Must have a parent -->
-        <menuitem id="configuration_categ" name="Configuration" sequence="5">
+        <menuitem id="configuration_categ" name="Configuration" sequence="10">
             <menuitem id="travel_gate_categ" name="Gates" action="travel.travel_gate_action" sequence="0"/>
             <menuitem id="township_categ" name="Township" action="travel.township_action" sequence="5"/>
         </menuitem>
