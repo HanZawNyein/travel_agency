@@ -138,6 +138,9 @@
                                 <tree editable="bottom">
                                     <field name="partner_ids" widget="many2many_tags"/>
                                     <field name="seat_number"/>
+                                    <field name="company_id" invisible="1"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount" widget="monetary" sum="total"/>
                                     <field name="travel_booking_id"/>
                                 </tree>
                             </field>

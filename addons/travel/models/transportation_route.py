@@ -66,12 +66,17 @@ class TransportationRouteLine(models.Model):
 
     transportation_route_id = fields.Many2one('transportation.route')
     partner_ids = fields.Many2many('res.partner')
+    company_id = fields.Many2one('res.company', default=lambda self: self.env.user.company_id.id)
+    currency_id = fields.Many2one('res.currency', related='company_id.currency_id')
+    amount = fields.Monetary(related="transportation_route_id.per_seat")
     seat_number = fields.Integer()
     travel_booking_id = fields.Many2one('travel.booking')
 
     @api.constrains('seat_number')
     def _check_start_arrived_datetime(self):
-        all_seat_number: list = self.transportation_route_id.transportation_route_line_ids.filtered(
-            lambda x: x.id != self.id).mapped('seat_number')
-        if self.seat_number in all_seat_number:
+        seat_numbers = set(range(1, self.transportation_route_id.seat + 1))
+        all_seat_number: list = set(self.transportation_route_id.transportation_route_line_ids.filtered(
+            lambda x: x.id != self.id).mapped('seat_number'))
+        results = seat_numbers - all_seat_number
+        if self.seat_number not in results:
             raise UserError(_("Seat Booking is already exists!"))
