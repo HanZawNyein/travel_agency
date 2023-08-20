@@ -28,6 +28,10 @@
                         <field name="transportation_route_id"/>
                         <field name="travel_agency_id"/>
                         <field name="travel_car_id"/>
+                        <field name="per_seat"/>
+                        <field name="company_id" invisible="1"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="total_amount"/>
                     </group>
                 </sheet>
             </form>

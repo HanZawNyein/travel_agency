@@ -113,21 +113,36 @@
                         <field name="travel_agency_id"/>
                         <field name="travel_car_id" domain="[('travel_agency_id','=',travel_agency_id)]"/>
                         <field name="seat"/>
+                        <field name="company_id" invisible="1"/>
+                        <field name="currency_id" invisible="1"/>
                         <field name="per_seat"/>
                         <field name="driver_id"/>
                     </group>
-                    <group string="Route Information">
-                        <group>
-                            <field name="start_datetime"/>
-                            <field name="start_township"/>
-                            <field name="start_gate" domain="[('township_id','=',start_township)]"/>
-                        </group>
-                        <group>
-                            <field name="arrived_datetime"/>
-                            <field name="arrived_township"/>
-                            <field name="arrived_gate" domain="[('township_id','=',arrived_township)]"/>
-                        </group>
-                    </group>
+                    <notebook>
+                        <page name="route_info" string="Route Information">
+                            <group>
+                                <group>
+                                    <field name="start_datetime"/>
+                                    <field name="start_township"/>
+                                    <field name="start_gate" domain="[('township_id','=',start_township)]"/>
+                                </group>
+                                <group>
+                                    <field name="arrived_datetime"/>
+                                    <field name="arrived_township"/>
+                                    <field name="arrived_gate" domain="[('township_id','=',arrived_township)]"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="booking" string="Booking">
+                            <field name="transportation_route_line_ids">
+                                <tree editable="bottom">
+                                    <field name="partner_ids" widget="many2many_tags"/>
+                                    <field name="seat_number"/>
+                                    <field name="travel_booking_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

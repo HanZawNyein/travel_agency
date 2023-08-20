@@ -10,7 +10,9 @@ class TransportationRoute(models.Model):
     logo = fields.Image(related="travel_agency_id.logo")
     travel_car_id = fields.Many2one('travel.car')
     seat = fields.Integer(related="travel_car_id.seat")
-    per_seat = fields.Float()
+    company_id = fields.Many2one('res.company', default=lambda self: self.env.user.company_id.id)
+    currency_id = fields.Many2one('res.currency', related="company_id.currency_id")
+    per_seat = fields.Monetary()
     avatar = fields.Image(related='travel_car_id.avatar')
     driver_id = fields.Many2one('res.partner', related="travel_car_id.partner_id")
     start_datetime = fields.Datetime()
@@ -25,6 +27,7 @@ class TransportationRoute(models.Model):
         ('running', 'Running'),
         ('arrived', 'Arrived'),
     ], default='draft')
+    transportation_route_line_ids = fields.One2many('transportation.route.line', 'transportation_route_id')
 
     def name_get(self):
         return [(rec.id, f"{rec.travel_car_id.car_number}({rec.start_datetime}-{rec.arrived_datetime})") for rec in
@@ -55,3 +58,20 @@ class TransportationRoute(models.Model):
 
     def action_running(self):
         self.state = "running"
+
+
+class TransportationRouteLine(models.Model):
+    _name = 'transportation.route.line'
+    _description = 'TransportationRoute Line'
+
+    transportation_route_id = fields.Many2one('transportation.route')
+    partner_ids = fields.Many2many('res.partner')
+    seat_number = fields.Integer()
+    travel_booking_id = fields.Many2one('travel.booking')
+
+    @api.constrains('seat_number')
+    def _check_start_arrived_datetime(self):
+        all_seat_number: list = self.transportation_route_id.transportation_route_line_ids.filtered(
+            lambda x: x.id != self.id).mapped('seat_number')
+        if self.seat_number in all_seat_number:
+            raise UserError(_("Seat Booking is already exists!"))
