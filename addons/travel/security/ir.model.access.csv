@@ -9,3 +9,4 @@ access_travel_driver_history,travel.driver.history,model_travel_driver_history,,
 access_transportation_route,transportation.route,model_transportation_route,,1,1,1,1
 access_transportation_route_line,transportation.route.line,model_transportation_route_line,,1,1,1,1
 access_travel_booking,travel.booking,model_travel_booking,,1,1,1,1
+access_travel_booking_line,travel.booking.line,model_travel_booking_line,,1,1,1,1
