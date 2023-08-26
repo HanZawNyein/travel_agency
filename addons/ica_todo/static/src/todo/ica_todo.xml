@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="ica_todo.TodoList" owl="1">
+        <div class="container mt-5">
+            <h1>Welcome from Todo List.</h1>
+            <button class="btn btn-primary">New</button>
+        </div>
+        <table class="table mx-3">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Task Name</th>
+              <th scope="col">Completed</th>
+            </tr>
+          </thead>
+          <tbody>
+                <tr t-foreach="state.taskList" t-as="task" t-key="task.id">
+                  <td>#</td>
+                  <td t-esc="task.name"/>
+<!--                   <td t-esc="task.completed"/> -->
+                  <td>
+                    <input type="checkbox" class="form-check-input" t-att-checked="task.completed"/>
+                  </td>
+                </tr>
+           </tbody>
+        </table>
+    </t>
+
+</templates>
