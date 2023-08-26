@@ -22,6 +22,7 @@
         <menuitem id="configuration_categ" name="Configuration" sequence="10">
             <menuitem id="travel_gate_categ" name="Gates" action="travel.travel_gate_action" sequence="0"/>
             <menuitem id="township_categ" name="Township" action="travel.township_action" sequence="5"/>
+            <menuitem id="contacts_categ" name="Contacts" action="contacts.action_contacts" sequence="15"/>
         </menuitem>
 
     </menuitem>

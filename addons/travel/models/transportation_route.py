@@ -65,7 +65,8 @@ class TransportationRouteLine(models.Model):
     _description = 'TransportationRoute Line'
 
     transportation_route_id = fields.Many2one('transportation.route')
-    partner_ids = fields.Many2many('res.partner')
+    partner_ids = fields.Many2many('res.partner', 'transportation_route_line_rel', 'partner_id',
+                                   'transportation_route_line_id')
     company_id = fields.Many2one('res.company', default=lambda self: self.env.user.company_id.id)
     currency_id = fields.Many2one('res.currency', related='company_id.currency_id')
     amount = fields.Monetary(related="transportation_route_id.per_seat")

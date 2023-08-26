@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <!-- Inherit Form View to Modify it -->
+   <record id="view_partner_form" model="ir.ui.view">
+       <field name="name">view_partner_form</field>
+       <field name="model">res.partner</field>
+       <field name="inherit_id" ref="base.view_partner_form"/>
+       <field name="arch" type="xml">
+
+           <xpath expr="//field[@name='phone']" position="after">
+               <!-- Add your fields or attributes here -->
+               <field name="create_date"/>
+           </xpath>
+
+           <xpath expr="//page[@name='internal_notes']" position="replace">
+              <page name="travel_booking" string="Travel Booking">
+                <field name="transportation_route_line_ids">
+                    <tree>
+                        <field name="partner_ids" widget="many2many_tags"/>
+                        <field name="seat_number"/>
+                        <field name="amount"/>
+                    </tree>
+                </field>
+              </page>
+           </xpath>
+
+       </field>
+   </record>
+
+</odoo>

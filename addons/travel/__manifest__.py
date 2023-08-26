@@ -1,6 +1,6 @@
 {
     "name": "Travelling",
-    "depends": ["base", "mail"],
+    "depends": ["base", "mail", "contacts"],
     "data": [
         # security
         "security/ir.model.access.csv",
@@ -16,6 +16,7 @@
         "views/travel_car.xml",
         "views/transportation_route.xml",
         "views/travel_booking.xml",
+        "views/res_partner.xml",
 
         # menus
         'views/menus.xml',
