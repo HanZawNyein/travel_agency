@@ -43,8 +43,7 @@ class TravelBooking(models.Model):
         return super(TravelBooking, self).create(values)
 
     def action_confirm(self):
-        booking = self.travel_booking_line_ids.filtered(
-            lambda booking_line_id: booking_line_id.booking == True)
+        booking = self.travel_booking_line_ids.filtered(lambda booking_line_id: booking_line_id.booking)
         if not len(self.partner_ids) == len(booking):
             raise UserError(_("Matching Failed."))
         self.state = "confirm"

@@ -54,7 +54,10 @@ class TransportationRoute(models.Model):
             self.arrived_gate = False
 
     def action_confirm(self):
-        self.state = "confirm"
+        for rec in self:
+            if not rec.state == "draft":
+                raise UserError(_("Sate is not draft."))
+            rec.state = "confirm"
 
     def action_running(self):
         self.state = "running"

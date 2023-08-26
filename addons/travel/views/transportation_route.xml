@@ -141,7 +141,7 @@
                                     <field name="company_id" invisible="1"/>
                                     <field name="currency_id" invisible="1"/>
                                     <field name="amount" widget="monetary" sum="total"/>
-                                    <field name="travel_booking_id"/>
+                                    <field name="travel_booking_id" optional="hide"/>
                                 </tree>
                             </field>
                         </page>
@@ -167,6 +167,7 @@
                 <field name="arrived_gate"/>
                 <field name="state"/>
                 <filter name="draft" domain="[('state','=','draft')]"/>
+                <filter name="confirm" domain="[('state','=','confirm')]"/>
                 <filter name="running" domain="[('state','=','running')]"/>
                 <group>
                     <filter name="state" context="{'group_by':'state'}"/>
@@ -180,4 +181,16 @@
         <field name="res_model">transportation.route</field>
         <field name="view_mode">kanban,tree,form</field>
     </record>
+
+    <record id="server_action_confirm" model="ir.actions.server">
+        <field name="name">Confirm</field>
+        <field name="model_id" ref="model_transportation_route"/>
+        <field name="binding_model_id" ref="travel.model_transportation_route"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.action_confirm()
+        </field>
+    </record>
+
 </odoo>

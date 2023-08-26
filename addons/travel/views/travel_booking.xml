@@ -9,6 +9,7 @@
                 <field name="transportation_route_id"/>
                 <field name="travel_agency_id"/>
                 <field name="travel_car_id"/>
+                <field name="state" widget="badge"/>
             </tree>
         </field>
     </record>
@@ -19,7 +20,7 @@
         <field name="arch" type="xml">
             <form string="travel_booking_form">
                 <header>
-                    <button name="action_confirm" string="Confirm" type="object"/>
+                    <button name="action_confirm" string="Confirm" type="object" states="draft"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
