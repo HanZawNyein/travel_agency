@@ -50,6 +50,14 @@ class TravelBooking(models.Model):
         self.state = "confirm"
         self.travel_booking_line_ids.filtered(
             lambda booking_line_id: booking_line_id.booking == False).unlink()
+        self.transportation_route_id.transportation_route_line_ids = [
+            (0, 0, {
+                "transportation_route_id": self.transportation_route_id.id,
+                "partner_ids": self.partner_ids.ids,
+                "travel_booking_id": self.id,
+                "seat_number": seat,
+            }) for seat in self.travel_booking_line_ids.mapped('seat_number')
+        ]
 
 
 class TravelBookingLine(models.Model):

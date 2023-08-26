@@ -75,9 +75,10 @@ class TransportationRouteLine(models.Model):
 
     @api.constrains('seat_number')
     def _check_start_arrived_datetime(self):
-        seat_numbers = set(range(1, self.transportation_route_id.seat + 1))
-        all_seat_number: list = set(self.transportation_route_id.transportation_route_line_ids.filtered(
-            lambda x: x.id != self.id).mapped('seat_number'))
-        results = seat_numbers - all_seat_number
-        if self.seat_number not in results:
-            raise UserError(_("Seat Booking is already exists!"))
+        for rec in self:
+            seat_numbers = set(range(1, rec.transportation_route_id.seat + 1))
+            all_seat_number: list = set(rec.transportation_route_id.transportation_route_line_ids.filtered(
+                lambda x: x.id != rec.id).mapped('seat_number'))
+            results = seat_numbers - all_seat_number
+            if rec.seat_number not in results:
+                raise UserError(_("Seat Booking is already exists!"))
