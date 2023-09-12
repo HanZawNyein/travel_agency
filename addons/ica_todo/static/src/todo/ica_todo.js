@@ -6,27 +6,27 @@ import {Component, onWillStart, useState} from "@odoo/owl";
 
 class TodoList extends Component {
     setup() {
+        this.model = "ica.todo"
+        this.orm = this.env.services.orm
         this.state = useState({
-            taskList: [
-                {"id": 1, "name": "Sample Task 1", "completed": false},
-                {"id": 2, "name": "Sample Task 2", "completed": false},
-                {"id": 3, "name": "Sample Task 3", "completed": true},
-                {"id": 4, "name": "Sample Task 4", "completed": false},
-                {"id": 5, "name": "Sample Task 5", "completed": false},
-            ]
+            taskList: []
         });
-        // console.log("i am here.");
-        // console.log(this.state.taskList);
         onWillStart(async () => {
             await this.getAllTask();
         })
     }
 
     async getAllTask() {
-        const orm = this.env.services.orm
-        // var allTaskList =
-        // console.log(allTaskList)
-        this.state.taskList = await orm.searchRead("ica.todo", [], ['name', 'completed']);
+        this.state.taskList = await this.orm.searchRead(this.model, [], ['name', 'completed']);
+    }
+
+    async toggleTask(e,task){
+        await this.orm.write(this.model,[task.id],{"completed":e.target.checked})
+    }
+
+    async deleteTask(task){
+        await this.orm.unlink(this.model,[task.id])
+        await this.getAllTask()
     }
 
 }

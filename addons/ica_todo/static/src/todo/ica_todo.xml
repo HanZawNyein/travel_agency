@@ -6,7 +6,8 @@
             <h1>Welcome from Todo List.</h1>
             <button class="btn btn-primary">New</button>
         </div>
-        <table class="table mx-3">
+        <div class="container">
+            <table class="table mx-3">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -20,11 +21,16 @@
                   <td t-esc="task.name"/>
 <!--                   <td t-esc="task.completed"/> -->
                   <td>
-                    <input type="checkbox" class="form-check-input" t-att-checked="task.completed"/>
+                    <input type="checkbox" class="form-check-input" t-att-checked="task.completed" t-on-click="(e)=>this.toggleTask(e,task)"/>
                   </td>
+                    <td>
+                        <button class="btn btn-warning m-2">Update</button>
+                        <button class="btn btn-danger m-2" t-on-click="(e)=>this.deleteTask(task)">Delete</button>
+                    </td>
                 </tr>
            </tbody>
         </table>
+        </div>
     </t>
 
 </templates>
